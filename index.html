@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>syllaprediction</title>
+<style>
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #101827;
+  color: white;
+}
+h1 { color: #65e6c1; }
+.carte {
+  background: #1e293b;
+  padding: 16px;
+  margin: 15px 0;
+  border-radius: 14px;
+}
+button, textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 9px;
+  font-size: 16px;
+}
+button {
+  border: 0;
+  background: #65e6c1;
+  color: #101827;
+  font-weight: bold;
+}
+textarea {
+  background: #0f172a;
+  color: white;
+  border: 1px solid #64748b;
+}
+#resultat {
+  white-space: pre-wrap;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+<h1>syllaprediction</h1>
+<p>Mon assistant intelligent personnel</p>
+
+<div class="carte">
+<h2>⚽ 1. Football</h2>
+<p>Prépare une analyse de match.</p>
+<textarea id="football" placeholder="Exemple : France contre Italie"></textarea>
+<button onclick="analyser('football')">Analyser le match</button>
+</div>
+
+<div class="carte">
+<h2>🎬 2. Mini-dramas</h2>
+<p>Imagine une histoire pour une courte vidéo.</p>
+<textarea id="drama" placeholder="Exemple : une histoire d'amour et de trahison"></textarea>
+<button onclick="analyser('drama')">Créer mon scénario</button>
+</div>
+
+<div class="carte">
+<h2>📈 3. Trading et investissement</h2>
+<p>Décris l'actif ou ta question.</p>
+<textarea id="trading" placeholder="Exemple : comprendre les risques du Bitcoin"></textarea>
+<button onclick="analyser('trading')">Étudier ma question</button>
+</div>
+
+<div class="carte">
+<h2>💰 4. Gestion des revenus</h2>
+<p>Prépare un budget ou un plan d'épargne.</p>
+<textarea id="revenus" placeholder="Exemple : gérer un budget de 200 €"></textarea>
+<button onclick="analyser('revenus')">Organiser mon budget</button>
+</div>
+
+<div class="carte">
+<h2>Résultat</h2>
+<p id="resultat">Choisis une fonction ci-dessus.</p>
+</div>
+
+<script>
+function analyser(type) {
+  const textes = {
+    football: "Analyse le match indiqué, les forces et faiblesses des équipes et les incertitudes. Ne garantis jamais un résultat.",
+    drama: "Crée un scénario original pour une vidéo courte, avec des personnages, un conflit, des dialogues et une fin.",
+    trading: "Explique les risques, les scénarios possibles et les questions à vérifier. Ne promets aucun bénéfice et ne passe aucun ordre.",
+    revenus: "Aide à répartir le budget, les dépenses, l'épargne et les objectifs. Demande les informations manquantes."
+  };
+  const question = document.getElementById(type).value.trim();
+  if (!question) {
+    document.getElementById("resultat").textContent = "Écris d'abord ta demande dans la case correspondante.";
+    return;
+  }
+  document.getElementById("resultat").textContent =
+    textes[type] + "\n\nTa demande : " + question +
+    "\n\nCette version enregistre ta demande à l'écran, mais elle n'est pas encore connectée à une véritable IA.";
+}
+</script>
+</body>
+</html>
